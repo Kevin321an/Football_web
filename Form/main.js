@@ -84,8 +84,6 @@ function sizeCatch(size){
 		case "XLarge":
 		return pXLarge;	
 		default:
-	
-
 	}
 
 };
@@ -107,36 +105,34 @@ function taxCalculate(province){
  function checkForm(form)
   {   
   	if (!validation(form)) return false;
-
-
-
-  	
-
-
-
- 
     	//get the value from left side
-    	var size=chRadio("sizeOption");
-    	if (!handleUndefined(size)) return false;
+    var size=chRadio("sizeOption");
+    if (!handleUndefined(size)) return false;
 		var type=chRadio("typeOption");
 		if (!handleUndefined(type)) return false;
 		var toppingNum=(chMultiSelect());
 		var province=vOfprovince("province");		
 
 		var total= subtotal(size,type,toppingNum,province);
-		alert(total);
-
+		
 
 		//shoot the detail on the screen 
 
-		document.getElementById('errors').classList.remove('hidden');
-
-		document.getElementById("size").innerHTML="Pizza size: "+ size;
+		  document.getElementById('errors').classList.remove('hidden');
+		  document.getElementById("size").innerHTML="Pizza size: "+ size;
     	document.getElementById("type").innerHTML="Pizza type: "+ type;
     	document.getElementById("top").innerHTML="The number of topping you selected: "+ toppingNum;
     	document.getElementById("total").innerHTML="Total "+ total;
-    return true;
+
+
+      alert(total);
+
+    return false;
   }
+
+
+
+
 
 // handle the undefined type
   function handleUndefined(value){
@@ -174,7 +170,7 @@ function taxCalculate(province){
     var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if(!filter.test(form.email.value)) {
       alert("Error: Please check you email address!");
-      form.username.focus();
+      //form.username.focus();
       return false;
     }
 
@@ -189,9 +185,12 @@ function taxCalculate(province){
     var pFilter = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
     if(!pFilter.test(telephone.value)) {
       alert("Error: Please check you Phone Number");
-      form.username.focus();
+      //form.username.focus();
       return false;
     }
+
+    return true;
         
   }
 
+  //e.preventdfault () to stop submit 
