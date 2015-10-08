@@ -117,17 +117,32 @@ function taxCalculate(province){
 		
 
 		//shoot the detail on the screen 
+    alert("Your order detail: "+"\n" 
+          +"Name: "+ form.name.value+"\n" 
+          +"Street: "+ form.street.value+"\n" 
+          +"Province: "+ form.province.value+"\n" 
+          +"Telephone: "+ form.telephone.value+"\n" 
+          +"Email: "+ form.email.value+"\n"          
+          +"Pizza size: "+ size + "\n" 
+          +"Pizza type: "+ type+"\n" 
+          +"Number of Topping "+ toppingNum+"\n"
+          +"Pizza type: "+ type+"\n" 
+          +"Total: $"+ total+"\n" )
 
-		  document.getElementById('errors').classList.remove('hidden');
+
+
+		  /*document.getElementById('errors').classList.remove('hidden');
 		  document.getElementById("size").innerHTML="Pizza size: "+ size;
     	document.getElementById("type").innerHTML="Pizza type: "+ type;
     	document.getElementById("top").innerHTML="The number of topping you selected: "+ toppingNum;
-    	document.getElementById("total").innerHTML="Total "+ total;
+    	document.getElementById("total").innerHTML="Total "+ total;*/
 
 
-      alert(total);
-
-    return false;
+      //alert(total);
+//process-form-data.php
+ form.action = "./process-form-data.php";
+ form.submit();
+    return true;
   }
 
 
@@ -194,3 +209,56 @@ function taxCalculate(province){
   }
 
   //e.preventdfault () to stop submit 
+
+/*
+  // handles the click event for link 1, sends the query
+function getOutput() {
+  getRequest(
+      'process-form-data.php', // URL for the PHP file
+       drawOutput,  // handle successful request
+       drawError    // handle error
+  );
+  return false;
+}  
+// handles drawing an error message
+function drawError() {
+    var container = document.getElementById('output');
+    container.innerHTML = 'Bummer: there was an error!';
+}
+// handles the response, adds the html
+function drawOutput(responseText) {
+    var container = document.getElementById('output');
+    container.innerHTML = responseText;
+}
+// helper function for cross-browser request object
+function getRequest(url, success, error) {
+    var req = false;
+    try{
+        // most browsers
+        req = new XMLHttpRequest();
+    } catch (e){
+        // IE
+        try{
+            req = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch(e) {
+            // try an older version
+            try{
+                req = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch(e) {
+                return false;
+            }
+        }
+    }
+    if (!req) return false;
+    if (typeof success != 'function') success = function () {};
+    if (typeof error!= 'function') error = function () {};
+    req.onreadystatechange = function(){
+        if(req.readyState == 4) {
+            return req.status === 200 ? 
+                success(req.responseText) : error(req.status);
+        }
+    }
+    req.open("GET", url, true);
+    req.send(null);
+    return req;
+}*/
